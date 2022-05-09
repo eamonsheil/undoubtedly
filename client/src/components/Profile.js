@@ -3,7 +3,12 @@ function Profile() {
     
     return ( 
         <div className="profile container">
-            <p>nothing</p>
+            <div className="profile-info-container">
+                
+            </div>
+            <div className="jobs-info-container">
+
+            </div>
         </div>
      );
 }
