@@ -3,21 +3,78 @@
   padding: 0;
   text-align: center;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .container {
-  min-height: 500px;
+  /* min-height: 500px; */
+  display: flex;
 }
 
-/* ---------Home Styles */
+/* ---------Home Styles-----------------*/
+.home {
+  min-height: 500px;
+  flex-direction: column;
+}
+.welcome {
+  border: 1px solid orange;
+  height: 100px;
+}
+.user-functions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+.login {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 100px;
+  width: 100px;
+}
+.signup {
+  border: 1px solid purple;
+  border-radius: 5px;
+  height: 100px;
+  width: 100px;
+}
 
 
-/* --------NavBar Styles */
 
+/* ---------NavBar Styles---------------*/
+.navbar {
+  height: 70px;
+  border: 1px solid blue;
+  justify-content: space-around;
+  /* align-items: center; */
+  margin: 10px 0;
+}
+.navbar a {
+  border: 1px solid red;
+  flex-basis: 100px;
+  height: inherit;
+  background-color: aqua;
+}
 
-/* ------JobsPage Styles */
+/* ---------JobsPage Styles-------------*/
+.jobs {
+  flex-direction: column;
+  height: 500px;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+.job {
+  flex-basis: 30px;
+  width: 300px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+/*----------Profile Page Styles---------*/
+.profile {
+  height: 500px;
+}
 
-
-/*---Profile Page Styles */
-
-
-/* --------Footer Styles */
+/* ---------Footer Styles---------------*/
 

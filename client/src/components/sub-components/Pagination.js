@@ -1,9 +1,12 @@
-function Pagination() {
-    
-    
+function Pagination({ pageNumbers, changePage }) {
+    const nums = [];
+    for (let i=1; i<=pageNumbers; i++) {
+        nums.push(i)
+    }
+    console.log(nums)
     return ( 
         <>
-            <h5>Page Numbers go here</h5>
+            {nums.map(n => (<button onClick={() => changePage(n)} key={n}>{n}</button>))}
         </>
      );
 }
