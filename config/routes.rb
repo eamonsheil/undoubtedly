@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   resources :jobs, only: [:index, :show]
   resources :employers, only: [:index, :show]
   resources :applicants, only: [:index, :show]
+  post "/signup", to: "applicants#create"
+  get "/me", to: "applicants#show"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
 
 

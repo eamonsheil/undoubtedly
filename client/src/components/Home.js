@@ -1,5 +1,8 @@
-import LoginForm from "./sub-components/LoginForm";
-import SignupForm from "./sub-components/SignupForm";
+
+
+import SignUpForm from "./SignUpForm";
+import LoginForm from "./LogInForm";
+
 
 function Home() {
     
@@ -18,6 +21,12 @@ function Home() {
                     <SignupForm />
                 </div>
             </div>
+            <div>
+                <SignUpForm />
+            </div>
+            <div><LoginForm/></div>
+
+
         </div>
     );
 }
