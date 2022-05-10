@@ -1,7 +1,7 @@
 puts "destroying seeds..."
 Applicant.destroy_all
 Employer.destroy_all
-puts "done destroying"
+puts "seeds destroyed"
 
 puts "seeding applicants...."
 
@@ -21,7 +21,6 @@ puts "seeding applicants...."
         frontend: Faker::Boolean.boolean,
         backend: Faker::Boolean.boolean,
         applicant_id: Applicant.all.sample
-
     )
 end
 puts "done seeding applicants!"
@@ -43,7 +42,8 @@ puts "seeding employers...."
             employment_type: Faker::Job.employment_type,
             required_skills: Faker::ProgrammingLanguage.name,
             remote: Faker::Boolean.boolean,
-            employer: Employer.all.sample
+            employer: Employer.all.sample,
+            title: Faker::Job.title
         )
     end
 end
