@@ -1,4 +1,6 @@
 
+import SignUpForm from "./SignUpForm";
+import LoginForm from "./LogInForm";
 
 function Home() {
     
@@ -13,6 +15,12 @@ function Home() {
                 <div className="login"></div>
                 <div className="signup"></div>
             </div>
+            <div>
+                <SignUpForm />
+            </div>
+            <div><LoginForm/></div>
+
+
         </div>
     );
 }
