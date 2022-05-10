@@ -1,16 +1,16 @@
 puts "destroying seeds..."
-Applicant.destroy_all
-Employer.destroy_all
+    Applicant.destroy_all
+    Employer.destroy_all
 puts "seeds destroyed"
 
 puts "seeding applicants...."
 
 5.times do
-    Applicant.create(
+    a = Applicant.create(
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: "password",
-    bio: Faker::Quote
+    bio: Faker::Quotes::Chiquito.expression
 )
 
     Skill.create(
@@ -20,15 +20,25 @@ puts "seeding applicants...."
         rails: Faker::Boolean.boolean,
         frontend: Faker::Boolean.boolean,
         backend: Faker::Boolean.boolean,
-        applicant_id: Applicant.all.sample
+        applicant_id: a.id
     )
 end
+
 puts "done seeding applicants!"
 
 puts "seeding employers...."
 
+skillsSelect = [
+    "javascript",
+    "ruby",
+    "react",
+    "rails",
+    "frontend",
+    "backend"
+ ]
+
 10.times do
-    Employer.create(
+    e = Employer.create(
         name: Faker::Company.name,
         email: Faker::Internet.email,
         password: "password",
@@ -38,11 +48,11 @@ puts "seeding employers...."
     rand(3..5).times do
         Job.create(
             description: Faker::Company.bs,
-            salary: rand(1000..100000),
+            salary: rand(60000..200000),
             employment_type: Faker::Job.employment_type,
-            required_skills: Faker::ProgrammingLanguage.name,
+            required_skills: skillsSelect[rand(0..5)],
             remote: Faker::Boolean.boolean,
-            employer: Employer.all.sample,
+            employer_id: e.id,
             title: Faker::Job.title
         )
     end

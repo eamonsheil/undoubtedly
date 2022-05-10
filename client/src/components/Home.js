@@ -1,10 +1,8 @@
+import SignupForm from "./sub-components/SignupForm";
+import LoginForm from "./sub-components/LogInForm";
 
 
-import SignUpForm from "./SignUpForm";
-import LoginForm from "./LogInForm";
-
-
-function Home() {
+function Home({user, setUser}) {
     
     return (  
 
@@ -15,18 +13,12 @@ function Home() {
             </div>
             <div className="user-functions">
                 <div className="login">
-                    <LoginForm />
+                {!user? <LoginForm setUser={setUser}/> : null}
                 </div>
                 <div className="signup">
-                    <SignupForm />
+                {!user? <SignupForm /> : null}
                 </div>
             </div>
-            <div>
-                <SignUpForm />
-            </div>
-            <div><LoginForm/></div>
-
-
         </div>
     );
 }

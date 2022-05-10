@@ -3,18 +3,19 @@ import React, { useState, useEffect } from 'react';
 
 
 
-function JobsPage() {
+function JobsPage({user, setUser}) {
 const [jobs, setJobs] = useState([])
 const [currentPage, setCurrentPage] = useState(1)
 const [postsPerPage, setPostsPerPage] = useState(5)
 
+
 useEffect(() => {
-    fetch('/jobs')
+    fetch(`/job_matches`)
     .then(res => res.json())
     .then(data => setJobs(data))
 },[])
 
-console.log(jobs)
+console.log(user)
 
 const numberOfJobs = jobs.length;
 const firstIndex = (currentPage * postsPerPage) - postsPerPage;
@@ -24,7 +25,7 @@ const pageNumbers = Math.ceil(numberOfJobs / postsPerPage)
 const currentJobs = jobs.slice(firstIndex, lastIndex)
 
 const changePage = num => setCurrentPage(num)
-console.log(currentJobs)
+// console.log(currentJobs)
     
 
     function openJobDetail(job) {

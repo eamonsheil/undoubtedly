@@ -1,12 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  text-align: center;
-
 }
 h1, p, b, label {
   color: #dad7cd;
   padding: .5em;
+  text-align: center;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -34,6 +33,7 @@ body {
   /* height: inherit; */
   background-color: #08090a;
   color: #dad7cd;
+  text-align: center;
 }
 
 /* ---------Home Styles-----------------*/

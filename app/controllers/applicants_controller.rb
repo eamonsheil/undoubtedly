@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: [:create, :index]
 
     def index
         render json: Applicant.all
@@ -12,13 +12,24 @@ class ApplicantsController < ApplicationController
       end
     
       def show
-        render json: @current_user
+
+        if params[:id]
+          user = Applicant.find(params[:id])
+          render json: user
+        end
+        
+        user = Applicant.find_by(id: session[:user_id])
+        if user
+          render json: user
+        else
+          render json: { message: "No user logged in" }, status: :unauthorized
+        end
       end
     
       private
     
       def user_params
-        params.permit(:username, :password, :password_confirmation, :name, :bio, :email)
+        params.permit(:password, :password_confirmation, :name, :bio, :email)
       end
     
 

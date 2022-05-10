@@ -11,7 +11,6 @@ import React, { useState, useEffect } from "react";
 
 
 function App() {
-
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -26,11 +25,12 @@ function App() {
   return (
     <div className="App">
     <h1>Undoubtedly</h1>
+    {user ? <h4>Welcome, {user.name}</h4> : null}
       <Navbar user={user} setUser={setUser}/>
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/jobs' element={<JobsPage/>}/>
-          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/' element={<Home user={user} setUser={setUser}/>}/>
+          <Route path='/jobs' element={<JobsPage user={user} setUser={setUser}/>}/>
+          <Route path='/profile' element={<Profile user={user}/>}/>
         </Routes>
       <Footer/>
     </div>

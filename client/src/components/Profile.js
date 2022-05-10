@@ -1,5 +1,7 @@
-function Profile() {
-    
+import {useEffect} from 'react'
+
+function Profile({ user }) {
+    console.log(user)
     
     return ( 
         <div className="profile container">

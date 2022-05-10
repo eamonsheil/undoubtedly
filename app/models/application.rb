@@ -1,4 +1,4 @@
 class Application < ApplicationRecord
     belongs_to :applicant
-    belongs_to :jobs
+    belongs_to :job
 end
