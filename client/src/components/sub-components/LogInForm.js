@@ -11,7 +11,8 @@ function LoginForm({ setUser }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
   
   function handleFormChange(e) {
     setFormData({...formData, [e.target.name]: e.target.value})
@@ -29,7 +30,7 @@ function LoginForm({ setUser }) {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((user) => setUser(user)).then(()=>navigate('/profile'));
         } else {
           r.json().then((err) => setErrors(err.errors));
         }

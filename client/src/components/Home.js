@@ -24,7 +24,11 @@ function Home({user, setUser}) {
                     <button>Register as Employer</button>
                 </div>
                 <div className="signup">
+<<<<<<< HEAD
                 {!user? <SignupForm setUser={setUser}/> : null}
+=======
+                {!user? <SignupForm setUser={setUser} /> : null}
+>>>>>>> chris-may11
                 </div>
             </div>
         </div>
