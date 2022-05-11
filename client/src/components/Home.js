@@ -12,11 +12,19 @@ function Home({user, setUser}) {
                 <p>Explanation of website, etc etc</p>
             </div>
             <div className="user-functions">
+                
                 <div className="login">
                 {!user? <LoginForm setUser={setUser}/> : null}
                 </div>
+                <div className="login">
+                    <button>Login</button>
+                </div>
                 <div className="signup">
-                {!user? <SignupForm /> : null}
+                    <button>Register as Applicant</button>
+                    <button>Register as Employer</button>
+                </div>
+                <div className="signup">
+                {!user? <SignupForm setUser={setUser}/> : null}
                 </div>
             </div>
         </div>

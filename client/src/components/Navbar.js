@@ -10,6 +10,7 @@ function Navbar({user, setUser}) {
             setUser(null);
           }
         });
+        navigate("/")
       }
 
     return (

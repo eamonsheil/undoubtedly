@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home user={user} setUser={setUser}/>}/>
           <Route path='/jobs' element={<JobsPage user={user} setUser={setUser}/>}/>
-          <Route path='/profile' element={<Profile user={user}/>}/>
+          <Route path='/profile' element={<Profile user={user} setUser={setUser}/>}/>
         </Routes>
       <Footer/>
     </div>

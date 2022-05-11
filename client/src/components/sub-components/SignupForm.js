@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom' 
 
 
 const defaultObj = {
@@ -9,22 +10,21 @@ const defaultObj = {
   bio: ""
 }
 
-function SignUpForm() {
+function SignUpForm({setUser}) {
   const [formData, setFormData] = useState(defaultObj) 
-   
-    const [errors, setErrors] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-  
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate()
 
     function handleFormChange(e) {
       setFormData({...formData, [e.target.name]: e.target.value})
   }
 
-
     function handleSubmit(e) {
       e.preventDefault();
       setErrors([]);
       setIsLoading(true);
+      
       fetch("/signup", {
         method: "POST",
         headers: {
@@ -34,13 +34,14 @@ function SignUpForm() {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((user) => console.log(user));
+          r.json().then((user) => setUser(user));
         } else {
           r.json().then((err) => setErrors(err.errors));
         }
       });
+      navigate("/profile")
     }
-  
+
     return (
       <form onSubmit={handleSubmit}>
           
@@ -48,7 +49,6 @@ function SignUpForm() {
             <input
               type="text"
               name="name"
-              autoComplete="off"
               value={formData.name}
               onChange={(e) => handleFormChange(e)}
             />
@@ -60,7 +60,6 @@ function SignUpForm() {
               name="password"
               value={formData.password}
               onChange={(e) => handleFormChange(e)}
-              autoComplete="current-password"
             />
           </label>
         
@@ -71,7 +70,6 @@ function SignUpForm() {
               name="password_confirmation"
               value={formData.password_confirmation}
               onChange={(e) => handleFormChange(e)}
-              autoComplete="current-password"
             />
           </label>
         
@@ -94,8 +92,7 @@ function SignUpForm() {
               onChange={(e) => handleFormChange(e)}
             />
           </label>
-        
-       
+          
           <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
         
        

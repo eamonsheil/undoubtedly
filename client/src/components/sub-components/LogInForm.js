@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const defaultObj = {
   email: "",
@@ -7,9 +8,10 @@ const defaultObj = {
 
 function LoginForm({ setUser }) {
   const [formData, setFormData] = useState(defaultObj) 
-
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate()
   
   function handleFormChange(e) {
     setFormData({...formData, [e.target.name]: e.target.value})
@@ -31,8 +33,9 @@ function LoginForm({ setUser }) {
         } else {
           r.json().then((err) => setErrors(err.errors));
         }
-      });
-      setFormData(defaultObj)
+      })
+      // setFormData(defaultObj)
+      // .then(navigate("/profile"));
     }
   
     return (
