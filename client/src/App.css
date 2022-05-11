@@ -98,3 +98,28 @@ form {
 
 /* ---------Footer Styles---------------*/
 
+
+
+/* ----------Modal Styles-------------- */
+.modal {
+  position: fixed;
+  top: 50vh;
+  left: 50vh;
+  background-color: #2c6e49;
+  padding: 15vw;
+  border-radius: 1em;
+}
+
+.modal-background-mask {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.2;
+}
+
+.centered {
+  transform: translate(-50%, -50%);
+}
