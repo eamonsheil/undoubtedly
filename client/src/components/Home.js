@@ -16,7 +16,7 @@ function Home({user, setUser}) {
                 {!user? <LoginForm setUser={setUser}/> : null}
                 </div>
                 <div className="signup">
-                {!user? <SignupForm /> : null}
+                {!user? <SignupForm setUser={setUser} /> : null}
                 </div>
             </div>
         </div>
