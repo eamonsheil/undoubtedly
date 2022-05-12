@@ -5,13 +5,22 @@ Rails.application.routes.draw do
   resources :skills, only: [:index]
 
   post "/signup", to: "applicants#create"
-  get "/me", to: "applicants#show"
-  post "/applicant_login", to: "sessions#create"
+
+  post "/signup_applicant", to: "applicants#create"
+  post "/signup_employer", to: "employers#create"
+  
+  get "/me", to: "auto_logins#show"
+  
+  post "/applicant_login", to: "sessions#create_applicant"
+  post "/employer_login", to: "sessions#create_employer"
+  
   delete "/logout", to: "sessions#destroy"
 
   get "/job_matches", to: "jobs#user_jobs"
 
   post "/add_skills", to: "skills#create"
+
+  post "/new_job", to: "jobs#create"
 
   post "/apply",to: "applications#create"
 

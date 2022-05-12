@@ -43,7 +43,7 @@ body {
   background-color: #4c956c;
 }
 .welcome {
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
   height: 100px;
 }
 .user-functions {
