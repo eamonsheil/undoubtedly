@@ -7,7 +7,7 @@ function AddJobsModal({user, setUser, setJobsModalOpen}) {
 
             <div className="modal centered">
                 <h3>Time to Create your First Job Posting!</h3>
-                {/* <AddJobForm/> */}
+                <AddJobForm user={user}/>
             </div>
         </>
      );

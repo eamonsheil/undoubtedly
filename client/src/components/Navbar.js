@@ -13,7 +13,7 @@ function Navbar({user, setUser}) {
         navigate("/")
       }
 
-      return !user ? (<h2>Signup or Login to get started!</h2>) :
+      return user ? 
       (
             <div className="navbar container">
                 <a href="/">Home</a>
@@ -22,7 +22,7 @@ function Navbar({user, setUser}) {
                 {user ? <button onClick={handleLogoutClick}>Logout</button> : null} 
                 
             </div>        
-     )
+     ) : (<h2>Login or Signup to get Started!</h2>);
 }
 
 export default Navbar;

@@ -14,6 +14,8 @@ class JobsController < ApplicationController
     end
 
     def create
+        job = Job.create(params.permit(:title, :description, :employment_type, :salary, :required_skills, :remote, :employer_id))
+        render json: job, status: :created
         
     end
 
