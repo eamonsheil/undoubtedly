@@ -10,7 +10,7 @@ const defaultObj = {
   bio: ""
 }
 
-function SignUpForm({setUser}) {
+function SignUpForm({setUser, isEmployer, setShowSignupModal}) {
   const [formData, setFormData] = useState(defaultObj) 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,14 +18,14 @@ function SignUpForm({setUser}) {
 
     function handleFormChange(e) {
       setFormData({...formData, [e.target.name]: e.target.value})
-  }
+    }
 
     function handleSubmit(e) {
       e.preventDefault();
       setErrors([]);
       setIsLoading(true);
       
-      fetch("/signup", {
+      fetch(isEmployer ? "/signup_employer" : "/signup_applicant", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,6 +39,7 @@ function SignUpForm({setUser}) {
           r.json().then((err) => setErrors(err.errors));
         }
       });
+      setShowSignupModal(false)
       navigate("/profile")
     }
 

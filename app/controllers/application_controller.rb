@@ -8,8 +8,14 @@ class ApplicationController < ActionController::API
   private
 
   def authorize
-    @current_user = Applicant.find_by(id: session[:user_id])
-
+    applicant = Applicant.find_by(id: session[:user_id])
+    employer = Employer.find_by(id: session[:user_id])
+    if applicant
+      @current_user = applicant
+    else
+      @current_user = employer
+    end
+  
     render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
   end
 

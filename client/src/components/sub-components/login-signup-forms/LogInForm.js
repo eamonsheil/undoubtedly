@@ -6,13 +6,16 @@ const defaultObj = {
   password: ""
 }
 
-function LoginForm({ setUser }) {
+function LoginFormApplicant({ setUser, isEmployer, setShowLoginModal }) {
   const [formData, setFormData] = useState(defaultObj) 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate()
   
+  console.log(isEmployer)
+
+
   function handleFormChange(e) {
     setFormData({...formData, [e.target.name]: e.target.value})
 }
@@ -20,7 +23,8 @@ function LoginForm({ setUser }) {
     function handleSubmit(e) {
       e.preventDefault();
       setIsLoading(true);
-      fetch("/applicant_login", {
+      
+      fetch(isEmployer ? "/employer_login" : "/applicant_login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,15 +33,19 @@ function LoginForm({ setUser }) {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((data) => setUser(data))
         } else {
-          r.json().then((err) => setErrors(err.errors));
+          r.json().then((err) => console.log(err.errors));
         }
       })
+        .then(setShowLoginModal(false))
       // setFormData(defaultObj)
       // .then(navigate("/profile"));
     }
   
+
+
+
     return (
       <form onSubmit={handleSubmit}>
         
@@ -69,4 +77,4 @@ function LoginForm({ setUser }) {
     );
   }
   
-  export default LoginForm;
+  export default LoginFormApplicant;
