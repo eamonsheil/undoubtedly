@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :employers, only: [:index, :show]
   resources :applicants, only: [:index, :show, :create]
   resources :skills, only: [:index]
+  resources :applications
 
   post "/signup", to: "applicants#create"
 
@@ -23,6 +24,9 @@ Rails.application.routes.draw do
   post "/new_job", to: "jobs#create"
 
   post "/apply",to: "applications#create"
+  delete "/withdraw/:id", to: "applications#destroy"
+
+  get "/job_applications", to: "applicants#job_applications"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

@@ -11,7 +11,8 @@ function LoginFormApplicant({ setUser, isEmployer, setShowLoginModal }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
   
   console.log(isEmployer)
 
@@ -33,7 +34,7 @@ function LoginFormApplicant({ setUser, isEmployer, setShowLoginModal }) {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((data) => setUser(data))
+          r.json().then((user) => setUser(user)).then(()=>navigate('/profile'));
         } else {
           r.json().then((err) => console.log(err.errors));
         }

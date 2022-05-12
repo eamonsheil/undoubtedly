@@ -9,10 +9,14 @@ import Footer from './Footer';
 import { Routes, Route } from 'react-router-dom'
 import React, { useState, useEffect } from "react";
 
-
+// const defaultObj = {
+//   skills: []
+// }
 function App() {
   const [user, setUser] = useState(null);
   const [isEmployer, setIsEmployer] = useState(false);
+
+ 
 
   useEffect(() => {
     // auto-login

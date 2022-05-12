@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom' 
-
+import { useNavigate } from "react-router-dom";
 
 const defaultObj = {
   name: "",
@@ -34,7 +33,7 @@ function SignUpForm({setUser, isEmployer, setShowSignupModal}) {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((user) => setUser(user)).then(()=>navigate('/profile'));
         } else {
           r.json().then((err) => setErrors(err.errors));
         }

@@ -74,6 +74,7 @@ function Home({user, setUser, isEmployer, setIsEmployer}) {
 
 
         </div>
+        
     );
 }
 
