@@ -25,6 +25,18 @@ class ApplicantsController < ApplicationController
           render json: { message: "No user logged in" }, status: :unauthorized
         end
       end
+
+      def job_applications
+
+        user = Applicant.find_by(id: session[:user_id])
+        if user
+          applications = user.applications
+          render json: applications, include: :job
+        else
+          render json: { message: "No user logged in" }, status: :unauthorized
+        end
+      end
+
     
       private
     
