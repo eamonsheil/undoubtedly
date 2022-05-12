@@ -7,12 +7,8 @@ function Profile({ user, setUser }) {
     const [skillsModalOpen, setSkillsModalOpen] = useState(false)
     const [jobApplications, setJobApplications] = useState([])
     const [appDetailModalOpen, setAppDetailModalOpen] = useState(false)
+    const [currentApp, setCurrentApp] = useState({})
 
-    
-
-    
-
-    console.log(user)
     setTimeout(() => (user.skills.length === 0 ? setSkillsModalOpen(true) : console.log(user.skills)), 500)
 
 
@@ -43,14 +39,17 @@ function handleUpdateApps(deletedApp){
 
 }
 
+function showAppDetails(job) {
+    setAppDetailModalOpen(true)
+    setCurrentApp(job)
+
+}
+
     if (user){
         return ( 
            
             <div className="profile container">
             {skillsModalOpen ? <AddSkillsModal user={user} setUser={setUser} setSkillsModalOpen={setSkillsModalOpen}/> : null }
-                
-                
-                
                 
                 <div className="profile-info-container">
                
@@ -63,10 +62,10 @@ function handleUpdateApps(deletedApp){
                
                 <div className="jobs-info-container">
                 <ol>
-                    {jobApplications.map(app => ( <li key={app.id}>{app.job.description}<button onClick={()=> setAppDetailModalOpen(true)}>View Details</button><button onClick={()=>handleDeleteApp(app.id)}>Withdraw Application</button>{appDetailModalOpen ? <AppDetailModal job={app.job}  setAppDetailModalOpen={setAppDetailModalOpen}/> : null} </li>
-
+                    {jobApplications.map(app => ( <li key={app.id}>{app.job.description}<button onClick={()=> showAppDetails(app.job)}>View Details</button><button onClick={()=>handleDeleteApp(app.id)}>Withdraw Application</button> </li>
                     ))}
                 </ol>
+                {appDetailModalOpen ? <AppDetailModal job={currentApp}  setAppDetailModalOpen={setAppDetailModalOpen}/> : null}
                 </div>
          </div>
         )}

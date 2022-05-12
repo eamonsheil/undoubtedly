@@ -21,6 +21,8 @@ useEffect(() => {
 
 
 
+
+
 const numberOfJobs = jobs.length;
 const firstIndex = (currentPage * postsPerPage) - postsPerPage;
 const lastIndex = currentPage * postsPerPage

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   post "/apply",to: "applications#create"
   delete "/withdraw/:id", to: "applications#destroy"
 
-  get "/job_applications", to: "applicants#job_applications"
+  get "/job_applications", to: "applications#job_applications"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
