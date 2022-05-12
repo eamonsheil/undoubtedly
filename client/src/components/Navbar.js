@@ -13,17 +13,14 @@ function Navbar({user, setUser}) {
         navigate("/")
       }
 
-    return (
+      return !user ? (<h2>Signup or Login to get started!</h2>) :
+      (
             <div className="navbar container">
-                {/* <button onClick={navigate("/")}>Home</button>
-                <button onClick={navigate("/jobs")}>Find Jobs</button>
-                <button onClick={navigate("/profile")}>Profile</button> */}
-
-            
                 <a href="/">Home</a>
                 <a href="/jobs">Find Jobs</a>
-                <a href="/profile">Profile</a>
-                {user ? <button onClick={handleLogoutClick}>Logout</button> : null}
+                {user.is_employer ? <a href="/employer_profile">Company Profile</a> : <a href="/profile">Profile</a>}
+                {user ? <button onClick={handleLogoutClick}>Logout</button> : null} 
+                
             </div>        
      )
 }
