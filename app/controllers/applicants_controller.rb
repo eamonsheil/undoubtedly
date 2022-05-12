@@ -11,10 +11,32 @@ class ApplicantsController < ApplicationController
         render json: user, status: :created
     end
     
-    def show
-      user = Applicant.find(params[:id])
-      render json: user
-    end
+      def show
+
+        if params[:id]
+          user = Applicant.find(params[:id])
+          render json: user
+        end
+        
+        user = Applicant.find_by(id: session[:user_id])
+        if user
+          render json: user
+        else
+          render json: { message: "No user logged in" }, status: :unauthorized
+        end
+      end
+
+      def job_applications
+
+        user = Applicant.find_by(id: session[:user_id])
+        if user
+          applications = user.applications
+          render json: applications, include: :job
+        else
+          render json: { message: "No user logged in" }, status: :unauthorized
+        end
+      end
+
     
     private
     
