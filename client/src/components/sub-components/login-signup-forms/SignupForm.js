@@ -39,7 +39,7 @@ function SignUpForm({setUser, isEmployer, setShowSignupModal}) {
         }
       });
       setShowSignupModal(false)
-      navigate("/profile")
+      // navigate("/profile")
     }
 
     return (

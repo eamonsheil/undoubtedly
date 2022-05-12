@@ -11,6 +11,7 @@ function Profile({ user, setUser }) {
     
 
     
+
     console.log(user)
     setTimeout(() => (user.skills.length === 0 ? setSkillsModalOpen(true) : console.log(user.skills)), 500)
 
@@ -24,6 +25,7 @@ function Profile({ user, setUser }) {
           }
         });
       }, []);
+
 
       console.log(jobApplications)
 
