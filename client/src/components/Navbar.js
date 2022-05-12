@@ -22,7 +22,7 @@ function Navbar({user, setUser}) {
                 {user ? <button onClick={handleLogoutClick}>Logout</button> : null} 
                 
             </div>        
-     ) : (<h2>Login or Signup to get Started!</h2>);
+     ) : null;
 }
 
 export default Navbar;

@@ -35,6 +35,7 @@ function Home({user, setUser, isEmployer, setIsEmployer}) {
             <h1>Home Page</h1>
             <div className="welcome">
                 <p>Explanation of website, etc etc</p>
+                {!user ? <h2>Login or Signup to get Started!</h2> : null}
             </div>
 
             <div className="user-functions">
