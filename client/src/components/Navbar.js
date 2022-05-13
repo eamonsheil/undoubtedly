@@ -17,7 +17,7 @@ function Navbar({user, setUser}) {
       (
             <div className="navbar container">
                 <a href="/">Home</a>
-                <a href="/jobs">Find Jobs</a>
+                {user.is_employer ? null : <a href="/jobs">Find Jobs</a>}
                 {user.is_employer ? <a href="/employer_profile">Company Profile</a> : <a href="/profile">Profile</a>}
                 {user ? <button onClick={handleLogoutClick}>Logout</button> : null} 
                 

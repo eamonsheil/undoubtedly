@@ -5,7 +5,7 @@ function LoginModal({setShowLoginModal, setUser, isEmployer}) {
         <>
             <div className="modal-background-mask" onClick={() => setShowLoginModal(false)}/>
 
-            <div className="modal centered">
+            <div className="login-modal modal centered">
                 <h3>Login:</h3>
                 <LoginFormApplicant setUser={setUser} isEmployer={isEmployer} setShowLoginModal={setShowLoginModal}/>
             </div>

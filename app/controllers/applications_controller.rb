@@ -1,5 +1,18 @@
 class ApplicationsController < ApplicationController
-    skip_before_action :authorize, only: [:create]
+    skip_before_action :authorize, only: [:create, :index]
+
+    def index
+      render json: Application.all
+    end
+
+    def show
+      app = Application.where(job_id: params[:id])
+      if app
+        render json: app
+      else
+        render json: { error: "Application not found" }, status: :not_found
+      end
+    end
 
     def create
         application = Application.create(params.permit(:applicant_id, :job_id))
@@ -15,6 +28,7 @@ class ApplicationsController < ApplicationController
         else
           render json: { error: "Application not found" }, status: :not_found
         end
-      end
+    end
+      
 
 end
