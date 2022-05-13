@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :applicants, only: [:index, :show, :create]
   resources :skills, only: [:index]
   resources :applications
-  resources :offers, only: [:index, :create]
+  resources :offers, only: [:index, :create, :show, :destroy]
 
   post "/signup", to: "applicants#create"
 
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   delete "/withdraw/:id", to: "applications#destroy"
 
   get "/job_applications", to: "applications#job_applications"
+
+  get "/job_applicants/:id", to: "applications#show"
 
   get "/job_applicants/:id", to: "applications#show"
 
