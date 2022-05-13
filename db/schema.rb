@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_223546) do
+ActiveRecord::Schema.define(version: 2022_05_13_015840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_223546) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
     t.boolean "is_employer", default: false
   end
 
@@ -61,6 +60,8 @@ ActiveRecord::Schema.define(version: 2022_05_11_223546) do
     t.integer "salary"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "message"
+    t.string "job_title"
   end
 
   create_table "skills", force: :cascade do |t|

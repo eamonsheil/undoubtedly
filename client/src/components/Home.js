@@ -1,4 +1,3 @@
-import SignupForm from "./sub-components/login-signup-forms/SignupForm";
 import LoginModal from "./modals/LoginModal";
 import SignupModal from "./modals/SignupModal";
 import { useState } from 'react'
@@ -32,15 +31,15 @@ function Home({user, setUser, isEmployer, setIsEmployer}) {
     return (  
 
         <div className="home container" >
-            <h1>Home Page</h1>
+            {/* <h1>Home Page</h1> */}
             <div className="welcome">
                 <p>Explanation of website, etc etc</p>
-                {!user ? <h2>Login or Signup to get Started!</h2> : null}
+                {/* {!user ? <h2>Login or Signup to get Started!</h2> : null} */}
             </div>
 
             <div className="user-functions">
                
-                <div className="login">
+                <div className="login-signup">
                     <button onClick={loginApplicant}>Login as Applicant</button>
                     <button onClick={loginEmployer}>Login as Employer</button>
                         {showLoginModal ? 
@@ -51,7 +50,7 @@ function Home({user, setUser, isEmployer, setIsEmployer}) {
                         : null}
                 </div>
 
-                <div className="signup">
+                <div className="login-signup">
                     <button onClick={registerApplicant}>Register as Applicant</button>
                     <button onClick={registerEmployer}>Register as Employer</button>
                     {showSignupModal ?

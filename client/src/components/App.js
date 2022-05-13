@@ -34,9 +34,13 @@ function App() {
   // console.log(user.is_employer)
   return (
     <div className="App">
-    <h1>Undoubtedly</h1>
+    <Navbar user={user} setUser={setUser}/>
+    <div className='greetings-container'>
     {user ? <h4>Welcome, {user.name}</h4> : null}
-      <Navbar user={user} setUser={setUser}/>
+      <div className='app-greetings'>
+        <h1>Undoubtedly</h1>
+      </div>
+    </div>
         <Routes>
           <Route path='/' element={<Home user={user} setUser={setUser} setIsEmployer={setIsEmployer} isEmployer={isEmployer}/>}/>
           <Route path='/jobs' element={<JobsPage user={user} setUser={setUser}/>}/>

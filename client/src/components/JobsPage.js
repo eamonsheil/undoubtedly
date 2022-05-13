@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 function JobsPage({user, setUser}) {
 const [jobs, setJobs] = useState([])
 const [currentPage, setCurrentPage] = useState(1)
-const [postsPerPage, setPostsPerPage] = useState(5)
+const [postsPerPage, setPostsPerPage] = useState(4)
 const [jobDetailModalOpen, setJobDetailModalOpen] = useState(false)
 const [currentJob, setCurrentJob] = useState({})
 
@@ -59,23 +59,26 @@ const changePage = num => setCurrentPage(num)
 
     return (
         <>
+        <div className="jobs-page">
             <div className="jobs container">
+            
                 {currentJobs.map(job => (
                     <div className="job" key={job.id}>
-                        <p><b>Title: </b>{job.title}</p>
-                        <p><b>Description: </b>{job.description}</p>
-                        <p><b>Salary: </b>{job.salary}</p>
+                        <div className="job-info">
+                            <p><b>Title: </b>{job.title}</p>
+                            <p><b>Description: </b>{job.description}</p>
+                            <p><b>Salary: </b>{job.salary}</p>
+                        </div>
                         <button onClick={() => showJobdetails(job)}>View Details</button>
                         {jobDetailModalOpen ? <JobDetailModal job={currentJob} user={user} setJobDetailModalOpen={setJobDetailModalOpen}/> : null}
                         <button onClick={() => applyForJob(job)}>Apply</button>                   
                     </div>
-                ))}
-    
-                
+                ))} 
             </div>
             <div>
                 <Pagination pageNumbers={pageNumbers} changePage={changePage}/>
             </div>
+        </div>
         </>
     )
 }
