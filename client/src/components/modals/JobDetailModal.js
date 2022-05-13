@@ -2,6 +2,7 @@
 
 
 function JobDetailModal({job, user, setJobDetailModalOpen}) {
+    console.log(job)
    
    
     return (

@@ -59,7 +59,6 @@ function LoginFormApplicant({ setUser, isEmployer, setShowLoginModal }) {
             />
           </label>
        
-        
           <label for="password">Password: 
             <input
               type="password"

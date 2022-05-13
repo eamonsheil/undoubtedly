@@ -33,7 +33,7 @@ function SignUpForm({setUser, isEmployer, setShowSignupModal}) {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((user) => setUser(user)).then(()=>navigate('/profile'));
+          r.json().then((user) => setUser(user)).then(()=>navigate(isEmployer ? '/employer_profile' : '/profile'));
         } else {
           r.json().then((err) => setErrors(err.errors));
         }
